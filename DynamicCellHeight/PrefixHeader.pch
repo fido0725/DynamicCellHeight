@@ -1,0 +1,33 @@
+//
+//  PrefixHeader.pch
+//  DynamicCellHeight
+//
+//  Created by chenfeng on 15/7/29.
+//  Copyright (c) 2015年 fido0725. All rights reserved.
+//
+
+#ifndef DynamicCellHeight_PrefixHeader_pch
+#define DynamicCellHeight_PrefixHeader_pch
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+///可以大致看看自动布局过程
+//#define LAYOUTLOG
+
+#ifdef LAYOUTLOG
+
+#define NSLog(format, ...) do {                                                                          \
+fprintf(stderr, "<%s : %d> %s\n",                                           \
+[[[NSString stringWithUTF8String:__FILE__] lastPathComponent] UTF8String],  \
+__LINE__, __func__);                                                        \
+(NSLog)((format), ##__VA_ARGS__);                                           \
+fprintf(stderr, "-------\n");                                               \
+} while (0)
+
+#else
+
+#define NSLog(format, ...)
+
+#endif
+
+#endif
